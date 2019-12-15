@@ -56,4 +56,14 @@ button {
    pointer-events: none;
 }
 
-@media only screen and (max-width: )
+footer {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   height: 25px;
+   background-color: white;
+   width: 100%;
+   font-family: 'Roboto Mono', monospace;
+   font-size: 15px;
+   line-height: 25px;
+}

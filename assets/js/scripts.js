@@ -61,7 +61,7 @@ function play(choose){
    let randNum = Math.random() * 8;
    
    /* NOTE if num < 3 = rock, else if num =< 3 and >= 5 = paper, else scissors */
-   let comp = weapon(randNum);
+   let comp = computerPlay(randNum);
    let compWeapon = document.querySelector('.rounded-right').querySelector('img');
    compWeapon.src = `${baseUrl+path.svg+comp}.svg`;
    animateCSS(compWeapon, changeWeaponAnimation);
@@ -69,38 +69,35 @@ function play(choose){
    /* NOTE if rock >< rock rand then draw */
    /* NOTE if rock >< scissors rand then win */
    /* NOTE if rock >< paper rand then lose */
-   let result = function(choose, comp) {   
-      if (choose == comp) {
-         animateCSS(roundStatus, 'btn-primary');
-         sndLose.play();
-         sndWin.play();
-         return "DRAW";
-      } else if (hands[choose].goDown == comp) {
-         addScore(++scoreComp.innerText);
-         animateCSS(roundStatus, 'btn-danger');
-         sndLose.play();
-         return "LOSE";
-      } else {
-         addScore(++scorePlayer.innerText, 'player');
-         animateCSS(roundStatus, 'btn-success');
-         sndWin.play();
-         return "WIN";
-      }
-   }
+   roundStatusTxt.innerHTML = playRound(choose, comp);
 
    roundCount++;
    
    document.querySelector('#round').innerHTML = `Round ${roundCount}`;
-   roundStatusTxt.innerHTML = result(choose, comp);
    console.log(scorePlayer.innerHTML, scoreComp.innerHTML);
 
 }
 
 function playRound(playerSelection, computerSelection) {
-   
+   if (playerSelection == computerSelection) {
+      animateCSS(roundStatus, 'btn-primary');
+      sndLose.play();
+      sndWin.play();
+      return "DRAW";
+   } else if (hands[playerSelection].goDown == computerSelection) {
+      addScore(++scoreComp.innerText);
+      animateCSS(roundStatus, 'btn-danger');
+      sndLose.play();
+      return "LOSE";
+   } else {
+      addScore(++scorePlayer.innerText, 'player');
+      animateCSS(roundStatus, 'btn-success');
+      sndWin.play();
+      return "WIN";
+   }
 }
 
-function weapon(number) {
+function computerPlay(number) {
    if ( number <= 2 ) {
       return "rock";
    } else if ( number >= 3 && number <= 5) {
@@ -111,10 +108,14 @@ function weapon(number) {
 }
 
 function addScore(number, who = 'comp'){
-   if (who == 'player') {
-      document.querySelector('.rounded-left').querySelector('h3').innerText = number;
+   if (number < 5 ) {   
+      if (who == 'player') {
+         document.querySelector('.rounded-left').querySelector('h3').innerText = number;
+      } else {
+         document.querySelector('.rounded-right').querySelector('h3').innerText = number;
+      }
    } else {
-      document.querySelector('.rounded-right').querySelector('h3').innerText = number;
+      (winnerAndReset(who)) ? location.reload(true) : window.close();
    }
 }
 
@@ -135,4 +136,14 @@ function animateCSS(element, animationName, callback) {
    }
 
    node.addEventListener('animationend', handleAnimationEnd)
+}
+
+function winnerAndReset(who){
+   if (who == 'comp') {
+      sndWin.play();
+      return confirm('You Lose');
+   } else {
+      sndLose.play();
+      return confirm('Congratulate you win!!');
+   } 
 }
