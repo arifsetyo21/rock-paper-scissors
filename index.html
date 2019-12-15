@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Simple Rock Paper Scissors Game</title>
+   <link rel="stylesheet" href="assets/css/style.css">
+   <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+</head>
+<body>
+   <div class="container">
+      <div class="row mt-4">
+         <div class="col-md-12">
+            <h1 class="text-center font-weight-bold">Simple Rock Paper Scissors Game</h1>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-md-5 bg-success rounded-left">
+            <img src="/assets/svg/rock.svg" class="" alt="">
+            <h3 class="score-player text-center">3</h3>
+         </div>
+         <div class="col-md-2 bg-primary pt-4 text-center">
+            <img src="/assets/png/logo.png" alt="">
+            <div class="row">
+               <div class="col-md-12">
+                  <h3 class="text-white" id="round">Round 0</h3>
+                  <h3 class="text-white">Coose your Waepon</h3>
+                  <ul class="pl-4 unstyled-list text-left text-white mt-5">
+                     <li>
+                        <div class="custom-control custom-radio">
+                           <input type="radio" class="custom-control-input" id="rock" name="example1" checked>
+                           <label class="custom-control-label" for="rock">Rock</label>
+                        </div> 
+                     </li>
+                     <li>
+                        <div class="custom-control custom-radio">
+                           <input type="radio" class="custom-control-input" id="paper" name="example1">
+                           <label class="custom-control-label" for="paper">Paper</label>
+                        </div> 
+                     </li>
+                     <li>
+                        <div class="custom-control custom-radio">
+                           <input type="radio" class="custom-control-input" id="scissors" name="example1">
+                           <label class="custom-control-label" for="scissors">Scissors</label>
+                        </div> 
+                     </li>
+                  </ul>
+                  <div class="row mt-5 mb-3">
+                     <div class="col-md-12">
+                        <button type="button" class="btn btn-block btn-lg" aria-pressed="true" id="roundStatus">
+                           <span>DRAW</span>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-5 bg-danger rounded-right">
+            <img src="/assets/svg/paper.svg" alt="">
+            <h3 class="score-player text-center ">3</h3>
+         </div>
+      </div>
+   </div>
+   <script src="assets/js/scripts.js"></script>
+   <script src="assets/js/jquery-3.4.1.min.js"></script>
+   <script src="assets/js/popper.min.js"></script>
+   <script src="assets/js/bootstrap.min.js"></script>
+</body>
+</html>
