@@ -141,9 +141,9 @@ function animateCSS(element, animationName, callback) {
 function winnerAndReset(who){
    if (who == 'comp') {
       sndWin.play();
-      return confirm('You Lose');
+      return confirm('You Lose, play again?');
    } else {
       sndLose.play();
-      return confirm('Congratulate you win!!');
+      return confirm('Congratulate you win!!, play again winner?');
    } 
 }
